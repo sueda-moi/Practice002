@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisGeneratorConfiguration">
+    <option name="credentials">
+      <map>
+        <entry key="jdbc:mysql://localhost:3306/crm">
+          <value>
+            <Credential>
+              <option name="username" value="root" />
+            </Credential>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="tableConfigs">
+      <map>
+        <entry key="collection">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="com.project.cn" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Collection" />
+              <option name="domainPackage" value="com.project.cn.domain" />
+              <option name="exampleName" value="CollectionExample" />
+              <option name="examplePackage" value="com.project.cn.example" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="CollectionMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="collection" />
+              <option name="primaryKey" value="collection_id" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="collection" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+        <entry key="ems">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Ems" />
+              <option name="domainPackage" value="com.project.cn.entity" />
+              <option name="exampleName" value="EmsExample" />
+              <option name="examplePackage" value="com.project.cn.entity" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="EmsMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="ems" />
+              <option name="primaryKey" value="" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="ems" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+        <entry key="indent">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Indent" />
+              <option name="domainPackage" value="com.project.cn.entity" />
+              <option name="exampleName" value="IndentExample" />
+              <option name="examplePackage" value="com.project.cn.entity" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="IndentMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="indent" />
+              <option name="primaryKey" value="indents_id" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="indent" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+        <entry key="order">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Order" />
+              <option name="domainPackage" value="com.project.cn.entity" />
+              <option name="exampleName" value="OrderExample" />
+              <option name="examplePackage" value="com.project.cn.entity" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="OrderMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="order" />
+              <option name="primaryKey" value="order_id" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="order" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+        <entry key="output">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="com.project.cn" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Output" />
+              <option name="domainPackage" value="com.project.cn.domain" />
+              <option name="exampleName" value="OutputExample" />
+              <option name="examplePackage" value="com.project.cn.example" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="OutputMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="output" />
+              <option name="primaryKey" value="output_id" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="output" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+        <entry key="settlement">
+          <value>
+            <TableConfig>
+              <option name="basePackage" value="" />
+              <option name="comment" value="true" />
+              <option name="domainName" value="Settlement" />
+              <option name="domainPackage" value="com.project.cn.entity" />
+              <option name="exampleName" value="SettlementExample" />
+              <option name="examplePackage" value="com.project.cn.entity" />
+              <option name="examplePostfix" value="Example" />
+              <option name="mapperName" value="SettlementMapper" />
+              <option name="mapperPackage" value="com.project.cn.mapper" />
+              <option name="mapperPostfix" value="Mapper" />
+              <option name="moduleRootPath" value="$PROJECT_DIR$" />
+              <option name="name" value="settlement" />
+              <option name="primaryKey" value="settlement_id" />
+              <option name="resourcePath" value="src/main/resources" />
+              <option name="sourcePath" value="src/main/java" />
+              <option name="tableName" value="settlement" />
+              <option name="useExample" value="true" />
+              <option name="xmlPackage" value="mapper" />
+            </TableConfig>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

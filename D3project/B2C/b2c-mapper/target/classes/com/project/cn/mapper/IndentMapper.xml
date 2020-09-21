@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.cn.mapper.IndentMapper">
+  <resultMap id="BaseResultMap" type="com.project.cn.entity.Indent">
+    <id column="indents_id" jdbcType="INTEGER" property="indentsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_img" jdbcType="VARCHAR" property="goodsImg" />
+    <result column="indents_time" jdbcType="TIMESTAMP" property="indentsTime" />
+    <result column="indents_status" jdbcType="VARCHAR" property="indentsStatus" />
+    <result column="indents_money" jdbcType="DECIMAL" property="indentsMoney" />
+    <result column="indents_source" jdbcType="VARCHAR" property="indentsSource" />
+    <result column="indents_clientname" jdbcType="VARCHAR" property="indentsClientname" />
+    <result column="indents_clientadress" jdbcType="VARCHAR" property="indentsClientadress" />
+    <result column="indents_cardId" jdbcType="VARCHAR" property="indentsCardid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    indents_id, goods_name, goods_img, indents_time, indents_status, indents_money, indents_source, 
+    indents_clientname, indents_clientadress, indents_cardId
+  </sql>
+  <select id="selectByExample" parameterType="com.project.cn.entity.IndentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from indent
+    where indents_id = #{indentsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from indent
+    where indents_id = #{indentsId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.project.cn.entity.IndentExample">
+    delete from indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="indents_id" keyProperty="indentsId" parameterType="com.project.cn.entity.Indent" useGeneratedKeys="true">
+    insert into indent (goods_name, goods_img, indents_time, 
+      indents_status, indents_money, indents_source, 
+      indents_clientname, indents_clientadress, 
+      indents_cardId)
+    values (#{goodsName,jdbcType=VARCHAR}, #{goodsImg,jdbcType=VARCHAR}, #{indentsTime,jdbcType=TIMESTAMP}, 
+      #{indentsStatus,jdbcType=VARCHAR}, #{indentsMoney,jdbcType=DECIMAL}, #{indentsSource,jdbcType=VARCHAR}, 
+      #{indentsClientname,jdbcType=VARCHAR}, #{indentsClientadress,jdbcType=VARCHAR}, 
+      #{indentsCardid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="indents_id" keyProperty="indentsId" parameterType="com.project.cn.entity.Indent" useGeneratedKeys="true">
+    insert into indent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsImg != null">
+        goods_img,
+      </if>
+      <if test="indentsTime != null">
+        indents_time,
+      </if>
+      <if test="indentsStatus != null">
+        indents_status,
+      </if>
+      <if test="indentsMoney != null">
+        indents_money,
+      </if>
+      <if test="indentsSource != null">
+        indents_source,
+      </if>
+      <if test="indentsClientname != null">
+        indents_clientname,
+      </if>
+      <if test="indentsClientadress != null">
+        indents_clientadress,
+      </if>
+      <if test="indentsCardid != null">
+        indents_cardId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null">
+        #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsTime != null">
+        #{indentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentsStatus != null">
+        #{indentsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsMoney != null">
+        #{indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indentsSource != null">
+        #{indentsSource,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsClientname != null">
+        #{indentsClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsClientadress != null">
+        #{indentsClientadress,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsCardid != null">
+        #{indentsCardid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.project.cn.entity.IndentExample" resultType="java.lang.Long">
+    select count(*) from indent
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update indent
+    <set>
+      <if test="record.indentsId != null">
+        indents_id = #{record.indentsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsName != null">
+        goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsImg != null">
+        goods_img = #{record.goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indentsTime != null">
+        indents_time = #{record.indentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.indentsStatus != null">
+        indents_status = #{record.indentsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indentsMoney != null">
+        indents_money = #{record.indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.indentsSource != null">
+        indents_source = #{record.indentsSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indentsClientname != null">
+        indents_clientname = #{record.indentsClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indentsClientadress != null">
+        indents_clientadress = #{record.indentsClientadress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.indentsCardid != null">
+        indents_cardId = #{record.indentsCardid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update indent
+    set indents_id = #{record.indentsId,jdbcType=INTEGER},
+      goods_name = #{record.goodsName,jdbcType=VARCHAR},
+      goods_img = #{record.goodsImg,jdbcType=VARCHAR},
+      indents_time = #{record.indentsTime,jdbcType=TIMESTAMP},
+      indents_status = #{record.indentsStatus,jdbcType=VARCHAR},
+      indents_money = #{record.indentsMoney,jdbcType=DECIMAL},
+      indents_source = #{record.indentsSource,jdbcType=VARCHAR},
+      indents_clientname = #{record.indentsClientname,jdbcType=VARCHAR},
+      indents_clientadress = #{record.indentsClientadress,jdbcType=VARCHAR},
+      indents_cardId = #{record.indentsCardid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.cn.entity.Indent">
+    update indent
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsImg != null">
+        goods_img = #{goodsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsTime != null">
+        indents_time = #{indentsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="indentsStatus != null">
+        indents_status = #{indentsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsMoney != null">
+        indents_money = #{indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indentsSource != null">
+        indents_source = #{indentsSource,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsClientname != null">
+        indents_clientname = #{indentsClientname,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsClientadress != null">
+        indents_clientadress = #{indentsClientadress,jdbcType=VARCHAR},
+      </if>
+      <if test="indentsCardid != null">
+        indents_cardId = #{indentsCardid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where indents_id = #{indentsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.cn.entity.Indent">
+    update indent
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_img = #{goodsImg,jdbcType=VARCHAR},
+      indents_time = #{indentsTime,jdbcType=TIMESTAMP},
+      indents_status = #{indentsStatus,jdbcType=VARCHAR},
+      indents_money = #{indentsMoney,jdbcType=DECIMAL},
+      indents_source = #{indentsSource,jdbcType=VARCHAR},
+      indents_clientname = #{indentsClientname,jdbcType=VARCHAR},
+      indents_clientadress = #{indentsClientadress,jdbcType=VARCHAR},
+      indents_cardId = #{indentsCardid,jdbcType=VARCHAR}
+    where indents_id = #{indentsId,jdbcType=INTEGER}
+  </update>
+</mapper>

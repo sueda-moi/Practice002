@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.cn.mapper.SettlementMapper">
+  <resultMap id="BaseResultMap" type="com.project.cn.domain.Settlement">
+    <id column="settlement_id" jdbcType="INTEGER" property="settlementId" />
+    <result column="indents_id" jdbcType="INTEGER" property="indentsId" />
+    <result column="indents_money" jdbcType="DECIMAL" property="indentsMoney" />
+    <result column="indents_cardId" jdbcType="INTEGER" property="indentsCardid" />
+    <result column="settlement_time" jdbcType="TIMESTAMP" property="settlementTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    settlement_id, indents_id, indents_money, indents_cardId, settlement_time
+  </sql>
+  <select id="selectByExample" parameterType="com.project.cn.example.SettlementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from settlement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from settlement
+    where settlement_id = #{settlementId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from settlement
+    where settlement_id = #{settlementId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.project.cn.example.SettlementExample">
+    delete from settlement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" keyColumn="settlement_id" keyProperty="settlementId" parameterType="com.project.cn.domain.Settlement" useGeneratedKeys="true">
+    insert into settlement (indents_id, indents_money, indents_cardId, 
+      settlement_time)
+    values (#{indentsId,jdbcType=INTEGER}, #{indentsMoney,jdbcType=DECIMAL}, #{indentsCardid,jdbcType=INTEGER}, 
+      #{settlementTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="settlement_id" keyProperty="settlementId" parameterType="com.project.cn.domain.Settlement" useGeneratedKeys="true">
+    insert into settlement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="indentsId != null">
+        indents_id,
+      </if>
+      <if test="indentsMoney != null">
+        indents_money,
+      </if>
+      <if test="indentsCardid != null">
+        indents_cardId,
+      </if>
+      <if test="settlementTime != null">
+        settlement_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="indentsId != null">
+        #{indentsId,jdbcType=INTEGER},
+      </if>
+      <if test="indentsMoney != null">
+        #{indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indentsCardid != null">
+        #{indentsCardid,jdbcType=INTEGER},
+      </if>
+      <if test="settlementTime != null">
+        #{settlementTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.project.cn.example.SettlementExample" resultType="java.lang.Long">
+    select count(*) from settlement
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update settlement
+    <set>
+      <if test="record.settlementId != null">
+        settlement_id = #{record.settlementId,jdbcType=INTEGER},
+      </if>
+      <if test="record.indentsId != null">
+        indents_id = #{record.indentsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.indentsMoney != null">
+        indents_money = #{record.indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.indentsCardid != null">
+        indents_cardId = #{record.indentsCardid,jdbcType=INTEGER},
+      </if>
+      <if test="record.settlementTime != null">
+        settlement_time = #{record.settlementTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update settlement
+    set settlement_id = #{record.settlementId,jdbcType=INTEGER},
+      indents_id = #{record.indentsId,jdbcType=INTEGER},
+      indents_money = #{record.indentsMoney,jdbcType=DECIMAL},
+      indents_cardId = #{record.indentsCardid,jdbcType=INTEGER},
+      settlement_time = #{record.settlementTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.project.cn.domain.Settlement">
+    update settlement
+    <set>
+      <if test="indentsId != null">
+        indents_id = #{indentsId,jdbcType=INTEGER},
+      </if>
+      <if test="indentsMoney != null">
+        indents_money = #{indentsMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indentsCardid != null">
+        indents_cardId = #{indentsCardid,jdbcType=INTEGER},
+      </if>
+      <if test="settlementTime != null">
+        settlement_time = #{settlementTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where settlement_id = #{settlementId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.project.cn.domain.Settlement">
+    update settlement
+    set indents_id = #{indentsId,jdbcType=INTEGER},
+      indents_money = #{indentsMoney,jdbcType=DECIMAL},
+      indents_cardId = #{indentsCardid,jdbcType=INTEGER},
+      settlement_time = #{settlementTime,jdbcType=TIMESTAMP}
+    where settlement_id = #{settlementId,jdbcType=INTEGER}
+  </update>
+</mapper>
